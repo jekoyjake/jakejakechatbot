@@ -427,7 +427,7 @@ class ChatBot(Client):
 
             if ("search pdf" in msg):
                 searchFiles(self)
-            elif ("jake gwapo" in msg):
+            elif ("@jake" in msg):
                 query = " ".join(msg.split(" ")[1:])
                 reply = chatGPT(self, query)
                 sendQuery()
@@ -628,14 +628,14 @@ class ChatBot(Client):
                             file_urls=unsent_msg, message=None, thread_id=thread_id, thread_type=ThreadType.GROUP)
                 else:
                     if(thread_type == ThreadType.USER):
-                        reply = f"You just unsent a message:\n{unsent_msg} "
+                        reply = f"😜You just unsent a message:\n👉{unsent_msg}👈 "
                         self.send(Message(text=reply), thread_id=thread_id,
                                   thread_type=thread_type)
                     elif(thread_type == ThreadType.GROUP):
                         user = self.fetchUserInfo(f"{author_id}")[
                             f"{author_id}"]
                         username = user.name.split()[0]
-                        reply = f"{username} just unsent a message:\n{unsent_msg}"
+                        reply = f"😜 @{username} just unsent a message:\n👉{unsent_msg}👈"
                         self.send(Message(text=reply), thread_id=thread_id,
                                   thread_type=thread_type)
 
